@@ -1,0 +1,33 @@
+{
+  "name": "carefree-taro-form",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "SunLxy <1011771396@qq.com>",
+  "homepage": "https://github.com/SunLxy/carefree-taro#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SunLxy/carefree-taro.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/SunLxy/carefree-taro/issues"
+  },
+  "dependencies": {
+    "rc-field-form": "^1.25.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "@tarojs/components": "^3.4.4"
+  }
+}
