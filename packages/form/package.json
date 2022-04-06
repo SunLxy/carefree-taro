@@ -10,7 +10,7 @@
   "module": "esm/index.js",
   "files": [
     "lib",
-    "es",
+    "esm",
     "src"
   ],
   "repository": {

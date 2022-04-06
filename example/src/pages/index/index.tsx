@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { View, Text } from '@tarojs/components';
+import { View, Text, Input } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import Taro from '@tarojs/taro';
 
@@ -22,25 +22,31 @@ export default class Index extends Component {
   render() {
     return (
       <View className="index">
-        <Text>Hello world!</Text>
+        {/* <Text>Hello world!</Text> */}
         <CarefTaroFrom>
-          <AtButton
-            type="primary"
-            onClick={() => {
-              Taro.navigateTo({ url: '/pages/home/index' });
-            }}
-          >
-            I need Taro UI
-          </AtButton>
-          <Text>Taro UI 支持 Vue 了吗？</Text>
-          <AtButton type="primary" circle>
-            支持
-          </AtButton>
-          <Text>共建？</Text>
-          <AtButton type="secondary" circle>
-            来
-          </AtButton>
+          <CarefTaroFrom.Item name="a" label="标题1">
+            <Input placeholder="将会获取焦点" focus />
+          </CarefTaroFrom.Item>
+          <CarefTaroFrom.Item name="b" label="标题2">
+            <Input placeholder="将会获取焦点" focus />
+          </CarefTaroFrom.Item>
         </CarefTaroFrom>
+        {/* <AtButton
+          type="primary"
+          onClick={() => {
+            Taro.navigateTo({ url: '/pages/home/index' });
+          }}
+        >
+          I need Taro UI
+        </AtButton>
+        <Text>Taro UI 支持 Vue 了吗？</Text>
+        <AtButton type="primary" circle>
+          支持
+        </AtButton>
+        <Text>共建？</Text>
+        <AtButton type="secondary" circle>
+          来
+        </AtButton> */}
       </View>
     );
   }

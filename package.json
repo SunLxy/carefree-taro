@@ -8,13 +8,14 @@
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "npm run build:form",
     "------taro-form------": "-------------------",
-    "build:form": "lerna extc --scope carefree-taro-form  -- npm run build",
+    "build:form": "lerna exec --scope carefree-taro-form  -- npm run build",
     "watch:form": "lerna exec --scope carefree-taro-form  -- npm run watch",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "clean": "lerna clean "
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -28,11 +29,11 @@
     ]
   },
   "dependencies": {
-    "react": "^16.12.0 || ^17.0.0"
+    "react": "^17.0.2"
   },
   "devDependencies": {
     "tsbb": "^3.7.2",
-    "@tarojs/components": "3.4.4",
+    "@tarojs/components": "^3.4.4",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^12.1.2",
     "@types/jest": "^27.0.3",
@@ -46,8 +47,7 @@
     "prettier": "2.4.1",
     "react-test-renderer": "17.0.2",
     "@types/react": "~17.0.43",
-    "@types/react-dom": "~17.0.14",
-    "copyfiles": "2.4.1"
+    "@types/react-dom": "~17.0.14"
   },
   "workspaces": {
     "packages": [

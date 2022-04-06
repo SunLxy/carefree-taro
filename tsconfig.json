@@ -8,28 +8,13 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@@/*": [
-        "src/.umi/*"
-      ],
-      "@packages": [
-        "packages/*"
-      ]
+      "@@/*": ["src/.umi/*"],
+      "@packages": ["packages/*"]
     }
   },
-  "include": [
-    "./typings.d.ts",
-    "packages/**/*.tsx",
-    "packages/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es",
-    "es",
-    "dist",
-    "typings"
-  ]
+  "include": ["./typings.d.ts", "packages/**/*.tsx", "packages/**/*.ts"],
+  "exclude": ["node_modules", "lib", "es", "es", "dist", "typings"]
 }
