@@ -11,7 +11,7 @@
  * 10. 多表单处理(联动和隐藏)
  * */
 import React from 'react';
-import Form, { useForm, FormProps, FormInstance, FormProvider, List } from 'rc-field-form';
+import Form, { useForm, FormInstance, FormProvider, List } from 'rc-field-form';
 import { FormContext } from './hooks';
 
 import { CarefreeFormProps } from './interface';
