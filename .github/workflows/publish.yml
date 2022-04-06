@@ -16,8 +16,8 @@ jobs:
       with:
         node-version: 14
  
-    # - run: yarn 
-    # - run: yarn build:ui 
+    - run: yarn 
+    - run: yarn build
     # - run: yarn run docs:build
 
     # - name: Create Doc
