@@ -52,14 +52,19 @@ const Item = (props: ItemProps) => {
         const onChange = (target: any) => {
           control.onChange(target);
         };
+
+        const childProps = {
+          ...control,
+          onChange: onChange,
+          onInput: onChange,
+          id: fieldId,
+        };
+
         const childNode =
           typeof children === 'function'
-            ? children({ ...control, id: fieldId }, meta, form)
+            ? children({ ...childProps }, meta, form)
             : React.cloneElement(children as React.ReactElement, {
-                ...restcontrol,
-                onChange: onChange,
-                onInput: onChange,
-                id: fieldId,
+                ...childProps,
               });
 
         const errs = meta.errors.map((err) => err).join(',');
