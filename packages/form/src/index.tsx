@@ -16,7 +16,7 @@ import { FormContext } from './hooks';
 
 import { CarefreeFormProps } from './interface';
 
-// import Item from "./item"
+import Item from './item';
 
 const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> = (props, ref) => {
   const { form, name, children, ...other } = props;
@@ -37,7 +37,7 @@ const InternalForm = React.forwardRef<FormInstance, CarefreeFormProps>(InitForm)
 export type RCFormProps = typeof InternalForm;
 
 interface RefForm extends RCFormProps {
-  // Item: typeof Item
+  Item: typeof Item;
   useForm: typeof useForm;
   FormProvider: typeof FormProvider;
   List: typeof List;
@@ -45,7 +45,7 @@ interface RefForm extends RCFormProps {
 
 const CarefreeForm: RefForm = InternalForm as RefForm;
 
-// CarefreeForm.Item = Item
+CarefreeForm.Item = Item;
 CarefreeForm.useForm = useForm;
 CarefreeForm.FormProvider = FormProvider;
 CarefreeForm.List = List;

@@ -8,7 +8,7 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@@/*": ["src/.umi/*"],
@@ -16,5 +16,5 @@
     }
   },
   "include": ["./typings.d.ts", "packages/**/*.tsx", "packages/**/*.ts"],
-  "exclude": ["node_modules", "lib", "es", "es", "dist", "typings"]
+  "exclude": ["node_modules", "lib", "es", "dist", "typings"]
 }
