@@ -24,7 +24,7 @@ export default class Index extends Component {
       <View className="index">
         {/* <Text>Hello world!</Text> */}
         <CarefTaroFrom>
-          <CarefTaroFrom.Item name="a" label="标题1">
+          <CarefTaroFrom.Item required name="a" label="标题1">
             <Input placeholder="将会获取焦点" focus />
           </CarefTaroFrom.Item>
           <CarefTaroFrom.Item name="b" label="标题2">

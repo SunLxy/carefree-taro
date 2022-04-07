@@ -1,10 +1,11 @@
 import React from 'react';
-import { View } from '@tarojs/components';
+import { View, Text } from '@tarojs/components';
 import { Field } from 'rc-field-form';
 import { InternalFieldProps } from 'rc-field-form/lib/Field';
 import { toArray, getFieldId } from '../utils/index';
 import { useFormContent } from '../hooks';
 import { getRequired } from './utils';
+import './style/index.module.css';
 
 export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'fieldContext'> {
   /** 布局 **/
@@ -25,7 +26,16 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
 }
 
 const Item = (props: ItemProps) => {
-  const { rules, layout, isColon, label, labelWarpStyle, required, children, ...other } = props;
+  const {
+    rules,
+    layout = 'vertical',
+    isColon,
+    label,
+    labelWarpStyle,
+    required,
+    children,
+    ...other
+  } = props;
 
   const { name: formName } = useFormContent();
 
@@ -79,12 +89,13 @@ const Item = (props: ItemProps) => {
 
         return (
           <View style={{ borderBottom: '1px solid #ccc' }}>
-            <View>
-              <View>
+            <View className={`form-item-${layout}`}>
+              <View className="form-item-label">
+                {isRequired && <Text className="form-item-label-required">*</Text>}
                 {label}
                 {colonRender}
               </View>
-              <View>
+              <View className={`form-item-input form-item-input-${layout}`}>
                 {/* 输入框 */}
                 {childNode}
               </View>

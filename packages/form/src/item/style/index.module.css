@@ -1,0 +1,36 @@
+.form-item-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.form-item-input {
+  flex: 1;
+}
+.form-item-input-space {
+  text-align: right;
+}
+.form-item-input-vertical {
+  text-align: left;
+}
+.form-item-input-horizontal {
+  text-align: left;
+}
+.form-item-space {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-item-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.form-item-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-item-label-required {
+  color: red;
+}
