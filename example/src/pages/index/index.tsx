@@ -1,10 +1,6 @@
 import { Component } from 'react';
-import { View, Text, Input } from '@tarojs/components';
-import { AtButton } from 'taro-ui';
-import Taro from '@tarojs/taro';
-
+import { View, Input } from '@tarojs/components';
 import CarefTaroFrom from 'carefree-taro-form';
-
 import 'taro-ui/dist/style/components/button.scss'; // 按需引入
 import './index.less';
 
@@ -24,7 +20,12 @@ export default class Index extends Component {
       <View className="index">
         {/* <Text>Hello world!</Text> */}
         <CarefTaroFrom>
-          <CarefTaroFrom.Item required name="a" label="标题1">
+          <CarefTaroFrom.Item
+            required
+            name="a"
+            label="标题1"
+            rules={[{ required: true, message: '请输入' }]}
+          >
             <Input placeholder="将会获取焦点" focus />
           </CarefTaroFrom.Item>
           <CarefTaroFrom.Item name="b" label="标题2">

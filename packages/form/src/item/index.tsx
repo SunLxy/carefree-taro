@@ -14,7 +14,6 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
   isColon?: boolean;
   /** label 展示内容 **/
   label?: React.ReactNode;
-  labelWarpStyle?: React.CSSProperties;
   /** 字段 **/
   name?: string | number | (string | number)[];
   /** 必填样式 **/
@@ -23,28 +22,81 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
   bottomBorderColor?: string;
   bottomBorderWidth?: number;
   // 错误提示方面先不做，后面看一下怎么做好看点
+  errorLayout?: 'right' | 'left';
+  /** 自定义错误渲染**/
+  errorRender?: (str: string, err: string[]) => React.ReactNode;
 }
 
 const Item = (props: ItemProps) => {
   const {
     rules,
-    layout = 'vertical',
+    layout = 'horizontal',
     isColon,
     label,
-    labelWarpStyle,
     required,
     children,
+    bottomBorder,
+    bottomBorderColor,
+    bottomBorderWidth,
+    errorLayout = 'right',
+    errorRender,
     ...other
   } = props;
 
-  const { name: formName } = useFormContent();
+  const {
+    name: formName,
+    bottomBorder: parentBottomBorder,
+    bottomBorderColor: parentBottomBorderColor,
+    bottomBorderWidth: parentBottomBorderWidth,
+    isColon: parentIsColon,
+  } = useFormContent();
 
   const colonRender = React.useMemo(() => {
-    if (isColon && layout === 'horizontal') {
-      return ':';
+    let colonStr = <Text className="form-item-label-colon">:</Text>;
+    if (layout === 'horizontal') {
+      if (typeof isColon === 'boolean' && isColon) {
+        return colonStr;
+      }
+      if (typeof isColon === 'boolean' && !isColon) {
+        return <React.Fragment />;
+      }
+      if (typeof parentIsColon === 'boolean' && parentIsColon) {
+        return colonStr;
+      }
     }
     return <React.Fragment />;
-  }, [isColon, layout]);
+  }, [isColon, layout, parentIsColon]);
+
+  const borderWidth = React.useMemo(() => {
+    let width = parentBottomBorderWidth + 'px';
+    if (typeof bottomBorderWidth === 'number') {
+      width = bottomBorderWidth + 'px';
+    }
+    return width;
+  }, [parentBottomBorderWidth, bottomBorderWidth]);
+
+  const borderColor = React.useMemo(() => {
+    let color = parentBottomBorderColor;
+    if (typeof bottomBorderColor === 'string') {
+      color = bottomBorderColor;
+    }
+    return color;
+  }, [parentBottomBorderColor, bottomBorderColor]);
+
+  const bottom = React.useMemo(() => {
+    let borderBottom: string = `${borderWidth} solid `;
+    if (!parentBottomBorder) {
+      borderBottom = '';
+    }
+    if (typeof bottomBorder === 'boolean' && bottomBorder) {
+      borderBottom = `${borderWidth} solid `;
+    }
+
+    if (typeof bottomBorder === 'boolean' && !bottomBorder) {
+      borderBottom = '';
+    }
+    return borderBottom;
+  }, [borderWidth, bottomBorder, parentBottomBorder]);
 
   return (
     <Field {...other} rules={rules}>
@@ -78,19 +130,30 @@ const Item = (props: ItemProps) => {
               });
 
         const errs = meta.errors.map((err) => err).join(',');
+
+        const borderBottomColor = !!errs.length ? 'red' : borderColor;
+
+        let borderStyle: { borderBottom?: string } = {};
+
+        if (bottom) {
+          borderStyle = { borderBottom: bottom + borderBottomColor };
+        }
+
         /**
+         *
          * 1. label 放在输入框上面
          * 2. label 和输入框放在一行
          * 3. label 和输入框放在一行，两侧
          * 4. 错误提示，默认放在每行的最下方
          * 5. 错误提示可以自定义渲染
-         *
          * **/
 
+        const cls = !errs.length ? '' : 'form-item-error-color';
+
         return (
-          <View style={{ borderBottom: '1px solid #ccc' }}>
-            <View className={`form-item-${layout}`}>
-              <View className="form-item-label">
+          <View>
+            <View className={`form-item-${layout}`} style={{ ...borderStyle }}>
+              <View className={`form-item-label ${cls}`}>
                 {isRequired && <Text className="form-item-label-required">*</Text>}
                 {label}
                 {colonRender}
@@ -100,7 +163,14 @@ const Item = (props: ItemProps) => {
                 {childNode}
               </View>
             </View>
-            <View>{/* 错误提示的 */}</View>
+            <View
+              className={`form-item-error form-item-error-color form-item-error-${errorLayout}`}
+            >
+              {/* 错误提示的 */}
+              {errorRender && typeof errorRender === 'function'
+                ? errorRender(errs, meta.errors)
+                : errs}
+            </View>
           </View>
         );
       }}

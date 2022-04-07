@@ -3,6 +3,10 @@
   flex-direction: row;
   align-items: center;
 }
+.form-item-label-colon {
+  margin: 0px 5px;
+}
+
 .form-item-input {
   flex: 1;
 }
@@ -32,5 +36,22 @@
   justify-content: center;
 }
 .form-item-label-required {
+  margin-right: 5px;
   color: red;
+}
+
+.form-item-error-color {
+  color: red;
+}
+
+.form-item-error {
+  font-size: 30px;
+}
+
+.form-item-error-left {
+  text-align: left;
+}
+
+.form-item-error-right {
+  text-align: right;
 }

@@ -23,7 +23,14 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
   const [forms] = Form.useForm(form);
 
   return (
-    <FormContext.Provider value={{}}>
+    <FormContext.Provider
+      value={{
+        bottomBorder: true,
+        bottomBorderColor: '#ccc',
+        bottomBorderWidth: 1,
+        isColon: true,
+      }}
+    >
       <Form {...other} name={name} ref={ref} component={false}>
         {children}
       </Form>
