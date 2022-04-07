@@ -26,6 +26,7 @@
     "url": "https://github.com/SunLxy/carefree-taro/issues"
   },
   "dependencies": {
+    "@babel/runtime": "7.15.3",
     "rc-field-form": "^1.25.0"
   },
   "peerDependencies": {

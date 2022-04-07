@@ -13,6 +13,8 @@
 import React from 'react';
 import Form, { useForm, FormInstance, FormProvider, List } from 'rc-field-form';
 import { FormContext } from './hooks';
+import { View } from '@tarojs/components';
+
 import { CarefreeFormProps } from './interface';
 
 import Item from './item';
@@ -23,11 +25,12 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
   const [forms] = Form.useForm(form);
 
   return (
-    <FormContext.Provider value={{}}>
-      <Form {...other} name={name} ref={ref} component={false}>
-        {children}
-      </Form>
-    </FormContext.Provider>
+    <View>{children}</View>
+    // <FormContext.Provider value={{}}>
+    //   <Form {...other} name={name} ref={ref} component={false}>
+    //     {children}
+    //   </Form>
+    // </FormContext.Provider>
   );
 };
 
@@ -44,7 +47,9 @@ interface RefForm extends RCFormProps {
 
 const CarefreeForm: RefForm = InternalForm as RefForm;
 
-CarefreeForm.Item = Item;
+CarefreeForm.Item = (props) => {
+  return <View>{props.children}</View>;
+};
 CarefreeForm.useForm = useForm;
 CarefreeForm.FormProvider = FormProvider;
 CarefreeForm.List = List;

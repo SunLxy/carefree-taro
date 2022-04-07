@@ -3,7 +3,7 @@ import { View, Text, Input } from '@tarojs/components';
 import { AtButton } from 'taro-ui';
 import Taro from '@tarojs/taro';
 
-import CarefTaroFrom from 'carefree-taro-form';
+import CarefTaroFrom from './src';
 
 import 'taro-ui/dist/style/components/button.scss'; // 按需引入
 import './index.less';

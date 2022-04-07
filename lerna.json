@@ -9,7 +9,5 @@
       "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
       "forceLocal": true
     }
-  },
-  "npmClient": "yarn",
-  "useWorkspaces": true
+  }
 }
