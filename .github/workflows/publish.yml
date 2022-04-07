@@ -56,6 +56,10 @@ jobs:
     #       ```
     #       ${{ steps.changelog.outputs.compareurl }}
     #       ${{ steps.changelog.outputs.changelog }}
-   
-    - run: npm install @jsdevtools/npm-publish -g
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/form/package.json
+    
+    - name: 📦 carefree-taro-form publish to NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/form/package.json
+
