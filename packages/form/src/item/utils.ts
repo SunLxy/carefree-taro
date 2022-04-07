@@ -1,7 +1,11 @@
 import { Rule } from 'rc-field-form/lib/interface';
 import { FormInstance } from 'rc-field-form';
 
-export const getRequired = (required: boolean | undefined, rules: Rule[], form: FormInstance) => {
+export const getRequired = (
+  required: boolean | undefined,
+  rules: Rule[] | undefined,
+  form: FormInstance,
+) => {
   const isRequired =
     required !== undefined
       ? required

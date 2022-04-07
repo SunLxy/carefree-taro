@@ -17,7 +17,7 @@
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
     "prepublishOnly": "npm run build",
-    "clean": "lerna clean "
+    "clean": "lerna clean --yes"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
