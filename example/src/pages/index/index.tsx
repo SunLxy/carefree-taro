@@ -20,6 +20,11 @@ export default class Index extends Component {
       <View className="index">
         {/* <Text>Hello world!</Text> */}
         <CarefTaroFrom
+          watchList={{
+            ces: (value, formvalue) => {
+              console.log(value);
+            },
+          }}
           config={[
             {
               type: 'Input',
