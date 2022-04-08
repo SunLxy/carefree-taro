@@ -90,7 +90,7 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
             layout: 'vertical',
           }}
         >
-          <Form {...other} name={name} ref={ref} component={false}>
+          <Form {...other} name={name} ref={formRef} component={false}>
             <ConfigItem
               key={'ConfigItem'}
               config={config || []}
