@@ -61,7 +61,7 @@ const ConfigItem = (props: ConfigItemProps) => {
 
         if (type === 'Input') {
           const attrs = attr as InputProps;
-          renderItem = <Input {...attrs} />;
+          renderItem = <Input placeholder={`请输入${label}`} {...attrs} />;
         } else if (type === 'Picker') {
           const attrs = attr as PickerProps;
           renderItem = <Picker {...attrs} />;
@@ -79,7 +79,7 @@ const ConfigItem = (props: ConfigItemProps) => {
           renderItem = <Switch {...attrs} />;
         } else if (type === 'Textarea') {
           const attrs = attr as TextareaProps;
-          renderItem = <Textarea {...attrs} />;
+          renderItem = <Textarea placeholder={`请输入${label}`} {...attrs} />;
         } else if (type === 'Checkbox') {
           const attrs = attr as CheckboxProps;
           renderItem = <Checkbox {...attrs} />;
