@@ -30,6 +30,7 @@ export default class Index extends Component {
               type: 'Input',
               label: '张三',
               name: 'ces',
+              rules: [{ required: true, message: '请输入' }],
             },
           ]}
         >
