@@ -19,7 +19,15 @@ export default class Index extends Component {
     return (
       <View className="index">
         {/* <Text>Hello world!</Text> */}
-        <CarefTaroFrom>
+        <CarefTaroFrom
+          config={[
+            {
+              type: 'Input',
+              label: '张三',
+              name: 'ces',
+            },
+          ]}
+        >
           <CarefTaroFrom.Item
             required
             name="a"

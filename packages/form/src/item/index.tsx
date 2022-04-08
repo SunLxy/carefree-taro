@@ -3,7 +3,7 @@ import { View, Text } from '@tarojs/components';
 import { Field } from 'rc-field-form';
 import { InternalFieldProps } from 'rc-field-form/lib/Field';
 import { toArray, getFieldId } from '../utils/index';
-import { useFormContent } from '../hooks';
+import { useFormStyleContext } from '../hooks';
 import { getRequired } from './utils';
 import './style/index.module.css';
 
@@ -30,7 +30,7 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
 const Item = (props: ItemProps) => {
   const {
     rules,
-    layout = 'horizontal',
+    layout: childLayout,
     isColon,
     label,
     required,
@@ -49,7 +49,12 @@ const Item = (props: ItemProps) => {
     bottomBorderColor: parentBottomBorderColor,
     bottomBorderWidth: parentBottomBorderWidth,
     isColon: parentIsColon,
-  } = useFormContent();
+    layout: parentLayout,
+  } = useFormStyleContext();
+
+  const layout = React.useMemo(() => {
+    return childLayout || parentLayout;
+  }, [childLayout, parentLayout]);
 
   const colonRender = React.useMemo(() => {
     let colonStr = <Text className="form-item-label-colon">:</Text>;
