@@ -27,7 +27,7 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
   // 错误提示方面先不做，后面看一下怎么做好看点
   errorLayout?: 'right' | 'left';
   /** 表单项 样式 **/
-  itemStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
   /** 自定义错误渲染**/
   errorRender?: (str: string, err: string[]) => React.ReactNode;
 }
@@ -45,7 +45,7 @@ const Item = (props: ItemProps) => {
     bottomBorderWidth,
     errorLayout = 'right',
     errorRender,
-    itemStyle,
+    style,
     ...other
   } = props;
 
@@ -163,10 +163,7 @@ const Item = (props: ItemProps) => {
         const cls = !errs.length ? '' : 'form-item-error-color';
 
         return (
-          <View
-            className="form-item-warp"
-            style={{ ...(parentItemStyle || {}), ...(itemStyle || {}) }}
-          >
+          <View className="form-item-warp" style={{ ...(parentItemStyle || {}), ...(style || {}) }}>
             <View className={`form-item-${layout}`} style={{ ...borderStyle }}>
               <View className={`form-item-label ${cls}`}>
                 {isRequired && <Text className="form-item-label-required">*</Text>}
