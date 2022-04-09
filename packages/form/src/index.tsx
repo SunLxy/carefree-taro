@@ -16,6 +16,7 @@ import Form, { useForm, FormInstance, FormProvider, List } from 'rc-field-form';
 import { FormStyleContext, useFormStyleContext } from './hooks';
 import Item from './item';
 import ConfigItem from './ConfigItem';
+import WatchFormItem from './Watch';
 
 import {
   /** 原 Collect  */
@@ -125,6 +126,7 @@ interface RefForm extends RCFormProps {
   useForm: typeof Form.useForm;
   List: typeof List;
   WatchItem: typeof WatchItem;
+  WatchFormItem: typeof WatchFormItem;
   useFormContext: typeof useFormContext;
   useFormStyleContext: typeof useFormStyleContext;
   useWatchList: typeof useWatchList;
@@ -148,6 +150,7 @@ CarefreeForm.FormProvider = FormProvider;
 CarefreeForm.List = List;
 // 下面这几个都是监听字段变化的
 CarefreeForm.WatchItem = WatchItem;
+CarefreeForm.WatchFormItem = WatchFormItem;
 CarefreeForm.useFormContext = useFormContext;
 CarefreeForm.useWatchList = useWatchList;
 CarefreeForm.useFormStyleContext = useFormStyleContext;
