@@ -52,7 +52,7 @@ jobs:
         tag: ${{ steps.create_tag.outputs.version }}
         body: |
           ```bash
-          npm i carefree-taro@${{steps.create_tag.outputs.version}}
+          npm i carefree-taro-from@${{steps.create_tag.outputs.version}}
           ```
           ${{ steps.changelog.outputs.compareurl }}
           ${{ steps.changelog.outputs.changelog }}
