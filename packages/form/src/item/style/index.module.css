@@ -1,3 +1,6 @@
+.form-item-warp {
+  padding-bottom: 8px;
+}
 .form-item-label {
   display: flex;
   flex-direction: row;

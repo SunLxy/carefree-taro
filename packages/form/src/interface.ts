@@ -51,11 +51,12 @@ export interface CarefreeFormConfigProps
   extends CarefreeRCFormConfigProps<ItemChildType, ItemChildAttr, ItemProps> {}
 
 export interface CarefreeFormProps
-  extends CarefreeRCFormProps<ItemChildType, ItemChildAttr, ItemProps> {}
+  extends CarefreeRCFormProps<ItemChildType, ItemChildAttr, ItemProps>,
+    ContextStyleProps {}
 
 export interface ContextStyleProps {
   /** 当前表单名称 **/
-  name?: string;
+  name?: string | string;
   /** 当前表单项 是否显示下方的横线 **/
   bottomBorder?: boolean;
   /** 当前表单项 下方的横线 的颜色 **/
@@ -64,6 +65,8 @@ export interface ContextStyleProps {
   bottomBorderWidth?: number;
   /** 是否显示冒号 **/
   isColon?: boolean;
+  /** 每个 Item 公共样式 */
+  itemStyle?: React.CSSProperties;
   /** 表单项布局 **/
   layout?: 'vertical' | 'horizontal' | 'space';
 }

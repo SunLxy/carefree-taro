@@ -18,11 +18,16 @@ export interface ItemProps extends Omit<InternalFieldProps<any>, 'name' | 'field
   name?: string | number | (string | number)[];
   /** 必填样式 **/
   required?: boolean;
+  /** 当前表单项 是否显示下方的横线 **/
   bottomBorder?: boolean;
+  /** 当前表单项 下方的横线 的颜色 **/
   bottomBorderColor?: string;
+  /** 当前表单项 下方的横线 的宽度 **/
   bottomBorderWidth?: number;
   // 错误提示方面先不做，后面看一下怎么做好看点
   errorLayout?: 'right' | 'left';
+  /** 表单项 样式 **/
+  itemStyle?: React.CSSProperties;
   /** 自定义错误渲染**/
   errorRender?: (str: string, err: string[]) => React.ReactNode;
 }
@@ -40,6 +45,7 @@ const Item = (props: ItemProps) => {
     bottomBorderWidth,
     errorLayout = 'right',
     errorRender,
+    itemStyle,
     ...other
   } = props;
 
@@ -50,6 +56,7 @@ const Item = (props: ItemProps) => {
     bottomBorderWidth: parentBottomBorderWidth,
     isColon: parentIsColon,
     layout: parentLayout,
+    itemStyle: parentItemStyle,
   } = useFormStyleContext();
 
   const layout = React.useMemo(() => {
@@ -156,7 +163,10 @@ const Item = (props: ItemProps) => {
         const cls = !errs.length ? '' : 'form-item-error-color';
 
         return (
-          <View>
+          <View
+            className="form-item-warp"
+            style={{ ...(parentItemStyle || {}), ...(itemStyle || {}) }}
+          >
             <View className={`form-item-${layout}`} style={{ ...borderStyle }}>
               <View className={`form-item-label ${cls}`}>
                 {isRequired && <Text className="form-item-label-required">*</Text>}

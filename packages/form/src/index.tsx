@@ -53,7 +53,18 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
     formHide,
     initialHide,
     subscribe,
-    layout = 'horizontal',
+    layout = 'vertical',
+    /** 当前表单项 是否显示下方的横线 **/
+    bottomBorder = true,
+    /** 当前表单项 下方的横线 的颜色 **/
+    bottomBorderColor = '#ccc',
+    /** 当前表单项 下方的横线 的宽度 **/
+    bottomBorderWidth = 1,
+    /** 是否显示冒号 **/
+    isColon = true,
+    /** 每个 Item 公共样式 */
+    itemStyle,
+    /** 表单项布局 **/
     ...other
   } = props;
 
@@ -98,11 +109,12 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
         >
           <FormStyleContext.Provider
             value={{
-              bottomBorder: true,
-              bottomBorderColor: '#ccc',
-              bottomBorderWidth: 1,
-              isColon: true,
-              layout: 'vertical',
+              bottomBorder,
+              bottomBorderColor,
+              bottomBorderWidth,
+              isColon,
+              layout,
+              itemStyle: itemStyle || {},
             }}
           >
             <Form {...other} name={name} ref={formRef} component={false}>
