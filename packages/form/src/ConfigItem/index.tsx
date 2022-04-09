@@ -1,9 +1,12 @@
 import React from 'react';
-import { SimpleFormConfigProps, WatchListProps } from './../interface';
-import Hide from '../Hide';
-import { Warp } from './../Watch';
+import { CarefreeFormConfigProps } from './../interface';
 import FormItem from './../item';
-import { useFormParentNameContext } from './../hooks';
+import {
+  useFormParentNameContext,
+  WatchListProps,
+  HideItem,
+  WatchItem,
+} from 'carefree-rc-field-from-utils';
 
 import {
   Input,
@@ -46,7 +49,7 @@ const getPathName = (
 };
 
 export interface ConfigItemProps {
-  config: SimpleFormConfigProps[];
+  config: CarefreeFormConfigProps[];
   watchList: WatchListProps;
 }
 
@@ -60,7 +63,7 @@ const ConfigItem = (props: ConfigItemProps) => {
       {config.map((item, index) => {
         const { type, label, name, itemAttr, attr, rules, render, isHide } = item;
 
-        const { watch = true, shouldUpdate, dependencies, ...itemOther } = itemAttr || {};
+        const { shouldUpdate, dependencies, ...itemOther } = itemAttr || {};
         let renderItem = undefined;
 
         if (type === 'Input') {
@@ -91,13 +94,8 @@ const ConfigItem = (props: ConfigItemProps) => {
           renderItem = render;
         }
 
-        if (
-          watchList &&
-          Object.keys(watchList).length &&
-          watch &&
-          watchList[getPathName(name, formName)]
-        ) {
-          renderItem = <Warp key={index}>{renderItem}</Warp>;
+        if (watchList && Object.keys(watchList).length && watchList[getPathName(name, formName)]) {
+          renderItem = <WatchItem key={index}>{renderItem}</WatchItem>;
         }
 
         const deep: any = {};
@@ -115,9 +113,9 @@ const ConfigItem = (props: ConfigItemProps) => {
         );
         if (isHide && name) {
           return (
-            <Hide key={index} name={name}>
+            <HideItem key={index} name={name}>
               {renderItem}
-            </Hide>
+            </HideItem>
           );
         }
         return renderItem;

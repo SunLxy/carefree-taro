@@ -13,28 +13,34 @@
 
 import React from 'react';
 import Form, { useForm, FormInstance, FormProvider, List } from 'rc-field-form';
+import { FormStyleContext, useFormStyleContext } from './hooks';
+import Item from './item';
+import ConfigItem from './ConfigItem';
+
 import {
-  FormContext,
-  useFormContext,
-  FormStyleContext,
-  useFormStyleContext,
-  FormParentNameContext,
-  useFormParentNameContext,
-} from './hooks';
-import { CarefreeFormProps } from './interface';
-import { useFormWatchList, useChildItemFun, getChildItemFun, ItemWatch } from './Watch';
-import {
-  FormSubscribeProvider,
-  useFormSubscribeProvider,
+  /** 原 Collect  */
+  SubscribeFormProvider,
+  useSubscribeFormProvider,
   useSubscribeReginsterId,
   useSubscribe,
-} from './Collect';
-import useFormItemHide from './Hide/store';
-import HideItem from './Hide';
-import Item from './item';
-import { HideContext } from './Hide/context';
-import ConfigItem from './ConfigItem';
-export * from './interface';
+  /** 原 watch  */
+  useWatchList,
+  useChildItemFun,
+  getChildItemFun,
+  WatchItem,
+  /** 原 hide  */
+  HideItem,
+  useHideFormItem,
+  HideContext,
+  /** 原 hooks  */
+  FormContext,
+  useFormContext,
+  FormParentNameContext,
+  useFormParentNameContext,
+} from 'carefree-rc-field-from-utils';
+export * from 'carefree-rc-field-from-utils';
+import { CarefreeFormProps, CarefreeFormConfigProps } from './interface';
+export type { CarefreeFormProps, CarefreeFormConfigProps };
 
 const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> = (props, ref) => {
   const {
@@ -63,7 +69,7 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
     return () => clearTimeout(timer);
   }, []);
   const [forms] = Form.useForm(form);
-  const [hide] = useFormItemHide(formHide);
+  const [hide] = useHideFormItem(formHide);
 
   // 只用组件加载的时候 运行一次
   React.useMemo(() => hide.setInitialValues(initialHide || {}, true), []);
@@ -118,17 +124,17 @@ interface RefForm extends RCFormProps {
   FormProvider: typeof FormProvider;
   useForm: typeof Form.useForm;
   List: typeof List;
-  ItemWatch: typeof ItemWatch;
+  WatchItem: typeof WatchItem;
   useFormContext: typeof useFormContext;
   useFormStyleContext: typeof useFormStyleContext;
-  useFormWatchList: typeof useFormWatchList;
+  useWatchList: typeof useWatchList;
   useChildItemFun: typeof useChildItemFun;
   getChildItemFun: typeof getChildItemFun;
-  useFormItemHide: typeof useFormItemHide;
+  useHideFormItem: typeof useHideFormItem;
   HideItem: typeof HideItem;
   useSubscribe: typeof useSubscribe; // 初始化
-  FormSubscribeProvider: typeof FormSubscribeProvider; //
-  useFormSubscribeProvider: typeof useFormSubscribeProvider; // 使用
+  SubscribeFormProvider: typeof SubscribeFormProvider; //
+  useSubscribeFormProvider: typeof useSubscribeFormProvider; // 使用
   useSubscribeReginsterId: typeof useSubscribeReginsterId; // 注册
   useFormParentNameContext: typeof useFormParentNameContext;
   FormParentNameContext: typeof FormParentNameContext;
@@ -141,9 +147,9 @@ CarefreeForm.useForm = useForm;
 CarefreeForm.FormProvider = FormProvider;
 CarefreeForm.List = List;
 // 下面这几个都是监听字段变化的
-CarefreeForm.ItemWatch = ItemWatch;
+CarefreeForm.WatchItem = WatchItem;
 CarefreeForm.useFormContext = useFormContext;
-CarefreeForm.useFormWatchList = useFormWatchList;
+CarefreeForm.useWatchList = useWatchList;
 CarefreeForm.useFormStyleContext = useFormStyleContext;
 CarefreeForm.FormParentNameContext = FormParentNameContext;
 CarefreeForm.useFormParentNameContext = useFormParentNameContext;
@@ -152,12 +158,12 @@ CarefreeForm.useFormParentNameContext = useFormParentNameContext;
 CarefreeForm.useChildItemFun = useChildItemFun;
 CarefreeForm.getChildItemFun = getChildItemFun;
 // 用于组件隐藏
-CarefreeForm.useFormItemHide = useFormItemHide;
+CarefreeForm.useHideFormItem = useHideFormItem;
 CarefreeForm.HideItem = HideItem;
 // 以下是为了收集form多个表单
 CarefreeForm.useSubscribe = useSubscribe;
-CarefreeForm.FormSubscribeProvider = FormSubscribeProvider;
-CarefreeForm.useFormSubscribeProvider = useFormSubscribeProvider;
+CarefreeForm.SubscribeFormProvider = SubscribeFormProvider;
+CarefreeForm.useSubscribeFormProvider = useSubscribeFormProvider;
 CarefreeForm.useSubscribeReginsterId = useSubscribeReginsterId;
 
 export default CarefreeForm;

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from '@tarojs/components';
 import { Field } from 'rc-field-form';
 import { InternalFieldProps } from 'rc-field-form/lib/Field';
-import { toArray, getFieldId } from '../utils/index';
+import { toArray, getFieldId } from 'carefree-rc-field-from-utils';
 import { useFormStyleContext } from '../hooks';
 import { getRequired } from './utils';
 import './style/index.module.css';
