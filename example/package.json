@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "example",
   "templateInfo": {
@@ -42,7 +42,7 @@
     "@tarojs/react": "3.4.4",
     "@tarojs/runtime": "3.4.4",
     "@tarojs/taro": "3.4.4",
-    "carefree-taro-form": "1.0.1",
+    "carefree-taro-form": "1.0.2",
     "lodash": "4.17.21",
     "rc-field-form": "1.25.0",
     "react": "^17.0.0",
