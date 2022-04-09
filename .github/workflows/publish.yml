@@ -21,21 +21,21 @@ jobs:
     - run: yarn run docs:build
 
     - name: Create Doc
-      uses: peaceiris/actions-gh-pages@last
+      uses: peaceiris/actions-gh-pages@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs-dist
 
     - name: Create Tag
       id: create_tag
-      uses: jaywcjlove/create-tag-action@last
+      uses: jaywcjlove/create-tag-action@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         package-path: ./lerna.json
 
     - name: Generate changelog
       id: changelog
-      uses: jaywcjlove/changelog-generator@last
+      uses: jaywcjlove/changelog-generator@main
       if: steps.create_tag.outputs.successful
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,7 +44,7 @@ jobs:
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - name: Create Release
-      uses: ncipollo/release-action@last
+      uses: ncipollo/release-action@main
       if: steps.create_tag.outputs.successful
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -58,7 +58,7 @@ jobs:
           ${{ steps.changelog.outputs.changelog }}
     
     - name: 📦 carefree-taro-form publish to NPM
-      uses: JS-DevTools/npm-publish@last
+      uses: JS-DevTools/npm-publish@master
       with:
         token: ${{ secrets.NPM_TOKEN }}
         package: ./packages/form/package.json
