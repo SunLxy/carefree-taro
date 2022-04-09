@@ -3,6 +3,8 @@ import { SimpleFormConfigProps, WatchListProps } from './../interface';
 import Hide from '../Hide';
 import { Warp } from './../Watch';
 import FormItem from './../item';
+import { useFormParentNameContext } from './../hooks';
+
 import {
   Input,
   InputProps,
@@ -46,11 +48,13 @@ const getPathName = (
 export interface ConfigItemProps {
   config: SimpleFormConfigProps[];
   watchList: WatchListProps;
-  name: string | number | undefined;
 }
 
 const ConfigItem = (props: ConfigItemProps) => {
-  const { config, watchList, name: formName } = props;
+  const { config, watchList } = props;
+
+  const formName = useFormParentNameContext();
+
   return (
     <React.Fragment>
       {config.map((item, index) => {
@@ -111,7 +115,7 @@ const ConfigItem = (props: ConfigItemProps) => {
         );
         if (isHide && name) {
           return (
-            <Hide key={index} name={name} formName={formName}>
+            <Hide key={index} name={name}>
               {renderItem}
             </Hide>
           );

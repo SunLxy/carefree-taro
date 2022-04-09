@@ -13,7 +13,14 @@
 
 import React from 'react';
 import Form, { useForm, FormInstance, FormProvider, List } from 'rc-field-form';
-import { FormContext, useFormContext, FormStyleContext, useFormStyleContext } from './hooks';
+import {
+  FormContext,
+  useFormContext,
+  FormStyleContext,
+  useFormStyleContext,
+  FormParentNameContext,
+  useFormParentNameContext,
+} from './hooks';
 import { CarefreeFormProps } from './interface';
 import { useFormWatchList, useChildItemFun, getChildItemFun, ItemWatch } from './Watch';
 import {
@@ -72,36 +79,33 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
   React.useImperativeHandle(ref, () => formRef.current);
 
   return (
-    <HideContext.Provider value={hide}>
-      <FormContext.Provider
-        value={{
-          firstMont,
-          watchList: watchList || {},
-          form: forms,
-          itemRefHook: formRef.current,
-        }}
-      >
-        <FormStyleContext.Provider
+    <FormParentNameContext.Provider value={name}>
+      <HideContext.Provider value={hide}>
+        <FormContext.Provider
           value={{
-            bottomBorder: true,
-            bottomBorderColor: '#ccc',
-            bottomBorderWidth: 1,
-            isColon: true,
-            layout: 'vertical',
+            firstMont,
+            watchList: watchList || {},
+            form: forms,
+            itemRefHook: formRef.current,
           }}
         >
-          <Form {...other} name={name} ref={formRef} component={false}>
-            <ConfigItem
-              key={'ConfigItem'}
-              config={config || []}
-              watchList={watchList || {}}
-              name={name}
-            />
-            {children}
-          </Form>
-        </FormStyleContext.Provider>
-      </FormContext.Provider>
-    </HideContext.Provider>
+          <FormStyleContext.Provider
+            value={{
+              bottomBorder: true,
+              bottomBorderColor: '#ccc',
+              bottomBorderWidth: 1,
+              isColon: true,
+              layout: 'vertical',
+            }}
+          >
+            <Form {...other} name={name} ref={formRef} component={false}>
+              <ConfigItem config={config || []} watchList={watchList || {}} />
+              {children}
+            </Form>
+          </FormStyleContext.Provider>
+        </FormContext.Provider>
+      </HideContext.Provider>
+    </FormParentNameContext.Provider>
   );
 };
 
@@ -126,6 +130,8 @@ interface RefForm extends RCFormProps {
   FormSubscribeProvider: typeof FormSubscribeProvider; //
   useFormSubscribeProvider: typeof useFormSubscribeProvider; // 使用
   useSubscribeReginsterId: typeof useSubscribeReginsterId; // 注册
+  useFormParentNameContext: typeof useFormParentNameContext;
+  FormParentNameContext: typeof FormParentNameContext;
 }
 
 const CarefreeForm: RefForm = InternalForm as RefForm;
@@ -139,6 +145,9 @@ CarefreeForm.ItemWatch = ItemWatch;
 CarefreeForm.useFormContext = useFormContext;
 CarefreeForm.useFormWatchList = useFormWatchList;
 CarefreeForm.useFormStyleContext = useFormStyleContext;
+CarefreeForm.FormParentNameContext = FormParentNameContext;
+CarefreeForm.useFormParentNameContext = useFormParentNameContext;
+
 // 获取form内部更新单个字段值方法
 CarefreeForm.useChildItemFun = useChildItemFun;
 CarefreeForm.getChildItemFun = getChildItemFun;

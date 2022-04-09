@@ -21,8 +21,13 @@ export default class Index extends Component {
         {/* <Text>Hello world!</Text> */}
         <CarefTaroFrom
           watchList={{
-            ces: (value, formvalue) => {
-              console.log(value);
+            ces: (value, formvalue, child, hideContext) => {
+              console.log(value, hideContext);
+              if (value === '12') {
+                hideContext.updateValue('a', true);
+              } else if (hideContext.getStoreState(['a'])) {
+                hideContext.updateValue('a', false);
+              }
             },
           }}
           config={[
@@ -34,14 +39,17 @@ export default class Index extends Component {
             },
           ]}
         >
-          <CarefTaroFrom.Item
-            required
-            name="a"
-            label="标题1"
-            rules={[{ required: true, message: '请输入' }]}
-          >
-            <Input placeholder="将会获取焦点" focus />
-          </CarefTaroFrom.Item>
+          <CarefTaroFrom.HideItem name="a">
+            <CarefTaroFrom.Item
+              required
+              name="a"
+              label="标题1"
+              rules={[{ required: true, message: '请输入' }]}
+            >
+              <Input placeholder="将会获取焦点" focus />
+            </CarefTaroFrom.Item>
+          </CarefTaroFrom.HideItem>
+
           <CarefTaroFrom.Item name="b" label="标题2">
             <Input placeholder="将会获取焦点" focus />
           </CarefTaroFrom.Item>

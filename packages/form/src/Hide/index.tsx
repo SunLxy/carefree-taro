@@ -1,6 +1,7 @@
 import React from 'react';
 import { HideContext } from './context';
 import { GetStoreProps, NamePath } from './interface';
+import { useFormParentNameContext } from './../hooks';
 
 export interface HideState {}
 
@@ -8,7 +9,7 @@ export interface HideProps {
   hideContent: GetStoreProps;
   name: NamePath;
   initialValue?: boolean;
-  formName: string | number;
+  formName?: string | number;
 }
 
 class Hide extends React.Component<HideProps, HideState> {
@@ -69,5 +70,6 @@ class Hide extends React.Component<HideProps, HideState> {
 
 export default (props: Omit<HideProps, 'hideContent'> & { [x: string]: any }) => {
   const hideContent = React.useContext(HideContext);
-  return <Hide {...props} hideContent={hideContent} />;
+  const parentName = useFormParentNameContext();
+  return <Hide {...props} formName={parentName} hideContent={hideContent} />;
 };

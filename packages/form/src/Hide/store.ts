@@ -134,7 +134,7 @@ class Store {
 }
 
 /** 状态管理 */
-const useStore = (form?: GetStoreProps) => {
+const useFormItemHide = (form?: GetStoreProps) => {
   const formRef = React.useRef<GetStoreProps>();
   if (!formRef.current) {
     if (form) {
@@ -147,4 +147,4 @@ const useStore = (form?: GetStoreProps) => {
   return [formRef.current];
 };
 
-export default useStore;
+export default useFormItemHide;
