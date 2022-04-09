@@ -31,7 +31,7 @@ jobs:
       uses: jaywcjlove/create-tag-action@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        package-path: ./lerna.json
+        package-path: ./package.json
 
     - name: Generate changelog
       id: changelog
