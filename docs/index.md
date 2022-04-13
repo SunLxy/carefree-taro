@@ -4,7 +4,7 @@ hero:
   desc: 对 taro组件 进行二次封装
   actions:
     - text: 快速上手
-      # link: /form
+      link: /form
 features:
   # - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
   #   title: '@ife/pro-components'

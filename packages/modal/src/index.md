@@ -1,8 +1,8 @@
 ---
-title: start
+title: modal
 order: 1
 nav:
-  order: 9
+  order: 2
   title: modal
   path: /modal
 group:
