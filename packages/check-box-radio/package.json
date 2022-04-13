@@ -7,10 +7,10 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "es/index.js",
+  "module": "esm/index.js",
   "files": [
     "lib",
-    "es",
+    "esm",
     "src"
   ],
   "repository": {

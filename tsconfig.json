@@ -16,5 +16,5 @@
     }
   },
   "include": ["./typings.d.ts", "packages/**/*.tsx", "packages/**/*.ts"],
-  "exclude": ["node_modules", "lib", "es", "dist", "typings"]
+  "exclude": ["node_modules", "lib", "esm", "dist", "typings"]
 }
