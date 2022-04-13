@@ -9,9 +9,10 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   alias: {
-    'carefree-taro-form': resolve(__dirname, './packages/form/src/index.ts'),
+    'carefree-taro-form': resolve(__dirname, './packages/form/src/index.tsx'),
+    'carefree-taro-modal': resolve(__dirname, './packages/modal/src/index.tsx'),
   },
   resolve: {
-    includes: ['docs', 'packages/form/src'],
+    includes: ['docs', 'packages/form/src', 'packages/modal/src'],
   },
 });
