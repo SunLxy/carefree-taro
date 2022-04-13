@@ -63,3 +63,8 @@ jobs:
         token: ${{ secrets.NPM_TOKEN }}
         package: ./packages/form/package.json
 
+    - name: 📦 carefree-taro-modal publish to NPM
+      uses: JS-DevTools/npm-publish@master
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/modal/package.json
