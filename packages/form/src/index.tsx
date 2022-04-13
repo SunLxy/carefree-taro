@@ -117,7 +117,7 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
               itemStyle: itemStyle || {},
             }}
           >
-            <Form {...other} name={name} ref={formRef} component={false}>
+            <Form {...other} name={name} form={forms} ref={formRef} component={false}>
               <ConfigItem config={config || []} watchList={watchList || {}} />
               {children}
             </Form>

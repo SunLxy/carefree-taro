@@ -7,7 +7,21 @@ import './index.less';
 
 export default () => {
   const [visible, setVisible] = React.useState(false);
+
   const modalRef = React.useRef<ModalRefProps>();
+
+  const [form] = CarefTaroFrom.useForm();
+  const onSubmit = async () => {
+    const result = await form
+      .validateFields()
+      .then((value) => value)
+      .catch(() => false);
+    console.log(result);
+    if (result) {
+      // setFormData(JSON.stringify(formData))
+      // onModal("bottom")
+    }
+  };
 
   return (
     <View className="index">
@@ -37,6 +51,7 @@ export default () => {
       )}
       <Text>Hello world12!</Text>
       <CarefTaroFrom
+        form={form}
         watchList={{
           ces: (value, formvalue, child, hideContext) => {
             console.log(value, hideContext);
@@ -70,6 +85,7 @@ export default () => {
         <CarefTaroFrom.Item name="b" label="标题2">
           <Input placeholder="将会获取焦点" focus />
         </CarefTaroFrom.Item>
+        <Button onClick={onSubmit}>保存表单</Button>
       </CarefTaroFrom>
     </View>
   );
