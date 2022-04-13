@@ -38,6 +38,13 @@ export interface ModalProps {
   /** 关闭 */
   onClose?: () => void;
 }
+
+export interface ModalRefProps {
+  /** 关闭 */
+  onMaskClick: () => void;
+  // 更新内部状态 不建议使用这个
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 ```
 
 ## 案例
@@ -46,11 +53,12 @@ export interface ModalProps {
 import CarefTaroFrom from 'carefree-taro-form';
 import { View, Button } from '@tarojs/components';
 import 'taro-ui/dist/style/components/button.scss';
-import Modal from 'carefree-taro-modal';
+import Modal,{ModalRefProps} from 'carefree-taro-modal';
 import React from 'react';
 
 export default Index = () => {
   const [visible, setVisible] = React.useState(false);
+  const modalRef = React.useRef<ModalRefProps>()
 
   return (
     <View>
@@ -61,10 +69,11 @@ export default Index = () => {
       >
         打开
       </Button>
-      <Modal visible={visible} layout="bottom" onClose={() => setVisible(false)}>
+      <Modal ref={modalRef} visible={visible} layout="bottom" onClose={() => setVisible(false)}>
         <Button
           onClick={() => {
-            setVisible(false);
+            // setVisible(false);
+             modalRef.current?.onMaskClick()
           }}
         >
           关闭

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from '@tarojs/components';
+import { View } from '@tarojs/components';
 import './style/index.module.css';
 
 export interface ModalProps {
@@ -22,8 +22,14 @@ export interface ModalProps {
   /** 关闭 */
   onClose?: () => void;
 }
+export interface ModalRefProps {
+  /** 关闭 */
+  onMaskClick: () => void;
+  //
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Modal = (props: ModalProps) => {
+const Modal: React.ForwardRefRenderFunction<ModalRefProps, ModalProps> = (props, ref) => {
   const {
     visible = false,
     layout = 'bottom',
@@ -33,10 +39,25 @@ const Modal = (props: ModalProps) => {
     bodyClassName = '',
     maskClassName = '',
     modalClassName = '',
-    onClose = () => {
-      console.log(111);
-    },
+    onClose = () => {},
   } = props;
+  const timer = React.useRef<NodeJS.Timeout>();
+
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (visible !== open) {
+      timer.current = setTimeout(() => {
+        setOpen(visible);
+      }, 300);
+    }
+    return () => clearTimeout(timer.current);
+  }, [visible]);
+
+  React.useEffect(() => {
+    return () => clearTimeout(timer.current);
+  }, []);
+
   const widthAndHeight = React.useMemo(() => {
     // 高度
     if (['bottom', 'top'].includes(layout)) {
@@ -51,14 +72,27 @@ const Modal = (props: ModalProps) => {
     return {};
   }, [width, height, layout]);
 
+  const onMaskClick = () => {
+    setOpen(false);
+    timer.current = setTimeout(() => {
+      onClose && onClose();
+      clearTimeout(timer.current);
+    }, 300);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    onMaskClick: onMaskClick,
+    setOpen,
+  }));
+
   return (
-    <View className={`carefree-taro-modal carefree-taro-modal-${visible} ${modalClassName}`}>
+    <View className={`carefree-taro-modal carefree-taro-modal-${open} ${modalClassName}`}>
       <View
-        onClick={onClose}
-        className={`carefree-taro-modal-overlay carefree-taro-modal-overlay-${visible} ${maskClassName}`}
+        onClick={onMaskClick}
+        className={`carefree-taro-modal-overlay carefree-taro-modal-overlay-${open} ${maskClassName}`}
       />
       <View
-        className={`carefree-taro-modal-body carefree-taro-modal-body-${layout} carefree-taro-modal-body-${layout}-${visible} ${bodyClassName}`}
+        className={`carefree-taro-modal-body carefree-taro-modal-body-${layout} carefree-taro-modal-body-${layout}-${open} ${bodyClassName}`}
         style={widthAndHeight}
       >
         {children}
@@ -67,4 +101,4 @@ const Modal = (props: ModalProps) => {
   );
 };
 
-export default Modal;
+export default React.forwardRef(Modal);
