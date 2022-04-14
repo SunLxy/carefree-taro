@@ -26,18 +26,16 @@
     "url": "https://github.com/SunLxy/carefree-taro/issues"
   },
   "dependencies": {
-    "@babel/runtime": "7.15.3",
     "carefree-rc-field-from-utils": "1.0.45",
     "rc-field-form": "1.25.0"
   },
   "devDependencies": {
-    "@babel/core": "7.15.0",
     "@types/react": "~17.0.43",
     "@types/react-dom": "~17.0.14"
   },
   "peerDependencies": {
     "@tarojs/components": "^3.4.4",
-    "react": "17.x",
-    "react-dom": "17.x"
+    "react": ">=17.x",
+    "react-dom": ">=17.x"
   }
 }
