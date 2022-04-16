@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Input, Text, Button } from '@tarojs/components';
 import CarefTaroFrom from 'carefree-taro-form';
+import CarefreeTaroCheckRadio from 'carefree-taro-check-radio';
 import CarefreeTaroModal, { ModalRefProps } from 'carefree-taro-modal';
 import 'taro-ui/dist/style/components/button.scss'; // 按需引入
 import './index.less';
@@ -25,6 +26,9 @@ export default () => {
 
   return (
     <View className="index">
+      <View style={{ padding: '20px' }}>
+        <CarefreeTaroCheckRadio />
+      </View>
       <Button
         onClick={() => {
           setVisible(true);

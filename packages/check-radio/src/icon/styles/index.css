@@ -1,0 +1,10 @@
+.carefree-taro-icon-check-radio {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.carefree-taro-icon-check-radio-bg {
+  transition: background-color 300ms ease-in;
+}
+.carefree-taro-icon-check-radio-disabled-true {
+  opacity: 0.6;
+}
