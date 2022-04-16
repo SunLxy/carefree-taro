@@ -5,7 +5,7 @@ import './styles/index.css';
 import { useCheckRadioContext } from './../hooks';
 import { ItemProps } from './../interface';
 const Item = (props: ItemProps) => {
-  const { value } = props;
+  const { value, className } = props;
 
   const child = Reflect.has(props, 'label') ? Reflect.get(props, 'label') : props.children;
 
@@ -58,7 +58,10 @@ const Item = (props: ItemProps) => {
   };
 
   return (
-    <View onClick={() => onClick(!visible)} className="carefree-taro-check-radio-item">
+    <View
+      onClick={() => onClick(!visible)}
+      className={`carefree-taro-check-radio-item ${className}`}
+    >
       <CheckRadio visible={checkVisible} onClick={onClick} />
       <View className="carefree-taro-check-radio-item-body">{child}</View>
     </View>

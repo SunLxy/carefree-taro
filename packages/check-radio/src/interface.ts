@@ -37,6 +37,7 @@ export interface ItemProps {
   iconProps?: Omit<IconProps, 'onClick' | 'visible' | 'disabled'>;
   children?: React.ReactNode;
   itemValue?: ValueType;
+  className?: string;
 }
 
 export interface CheckRadioContextProps extends Omit<CheckRadioProps, 'render' | 'onChange'> {
