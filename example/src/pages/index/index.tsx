@@ -11,6 +11,7 @@ export default () => {
 
   const [values, setValues] = React.useState<any>([{ value: 1, label: '测试' }]);
   const [values2, setValues2] = React.useState<any>([{ value: '222', label: '测试' }]);
+  const [values3, setValues3] = React.useState<any>(false);
 
   const modalRef = React.useRef<ModalRefProps>();
 
@@ -54,8 +55,18 @@ export default () => {
             setValues2(value);
           }}
         >
-          <CarefreeTaroCheckRadio.Item value="222">吃大餐达成</CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item value="222">吃大餐达成1</CarefreeTaroCheckRadio.Item>
         </CarefreeTaroCheckRadio>
+        <CarefreeTaroCheckRadio.Item
+          visible={values3}
+          onChange={(value) => {
+            console.log(222, value);
+            setValues3(value);
+          }}
+        >
+          吃大餐达成2
+        </CarefreeTaroCheckRadio.Item>
+        <CarefreeTaroCheckRadio.Item>吃大餐达成3</CarefreeTaroCheckRadio.Item>
       </View>
       <Button
         onClick={() => {

@@ -37,7 +37,11 @@ const Item = (props: ItemProps) => {
     return false;
   }, [diffValue]);
 
-  let checkVisible = store.onChange ? check : props.onChange ? props.visible : visible;
+  let checkVisible = store.onChange
+    ? check
+    : Reflect.has(props, 'visible')
+    ? props.visible
+    : visible;
 
   const onClick = (visible: boolean) => {
     if (store.onChange) {
