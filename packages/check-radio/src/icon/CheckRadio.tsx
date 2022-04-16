@@ -33,10 +33,12 @@ export default (props: IconProps) => {
   return (
     <View
       className={`carefree-taro-icon-check-radio carefree-taro-icon-check-radio-disabled-${disabled}`}
-      onClick={() => {
+      onClick={(event) => {
         if (disabled) {
           return;
         }
+        event.stopPropagation();
+        event.preventDefault();
         if (onClick) {
           onClick(!isShow);
         } else {

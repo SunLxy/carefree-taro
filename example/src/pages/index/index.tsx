@@ -9,6 +9,9 @@ import './index.less';
 export default () => {
   const [visible, setVisible] = React.useState(false);
 
+  const [values, setValues] = React.useState<any>([{ value: 1, label: '测试' }]);
+  const [values2, setValues2] = React.useState<any>([{ value: '222', label: '测试' }]);
+
   const modalRef = React.useRef<ModalRefProps>();
 
   const [form] = CarefTaroFrom.useForm();
@@ -27,7 +30,32 @@ export default () => {
   return (
     <View className="index">
       <View style={{ padding: '20px' }}>
-        <CarefreeTaroCheckRadio />
+        <CarefreeTaroCheckRadio
+          multiple
+          labelInValue
+          value={values}
+          onChange={(value) => {
+            console.log('value', value);
+            setValues(value);
+          }}
+          options={[
+            {
+              label: '测试',
+              value: 1,
+            },
+          ]}
+        />
+        <CarefreeTaroCheckRadio
+          value={values2}
+          multiple
+          labelInValue
+          onChange={(value) => {
+            console.log('value--->', value);
+            setValues2(value);
+          }}
+        >
+          <CarefreeTaroCheckRadio.Item value="222">吃大餐达成</CarefreeTaroCheckRadio.Item>
+        </CarefreeTaroCheckRadio>
       </View>
       <Button
         onClick={() => {

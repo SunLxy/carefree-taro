@@ -1,0 +1,9 @@
+.carefree-taro-check-radio-item {
+  display: flex;
+  align-items: center;
+  background-color: aqua;
+}
+
+.carefree-taro-check-radio-item-body {
+  margin-left: 10px;
+}
