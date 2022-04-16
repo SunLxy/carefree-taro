@@ -68,3 +68,9 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         package: ./packages/modal/package.json
+
+    - name: 📦 carefree-taro-check-radio publish to NPM
+      uses: JS-DevTools/npm-publish@master
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/check-radio/package.json
