@@ -29,10 +29,6 @@
     "carefree-rc-field-from-utils": "1.0.45",
     "rc-field-form": "1.25.0"
   },
-  "devDependencies": {
-    "@types/react": "~17.0.43",
-    "@types/react-dom": "~17.0.14"
-  },
   "peerDependencies": {
     "@tarojs/components": "^3.4.4",
     "react": ">=17.x",

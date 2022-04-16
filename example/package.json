@@ -44,6 +44,7 @@
     "@tarojs/taro": "3.4.4",
     "carefree-taro-form": "1.0.4",
     "carefree-taro-modal": "1.0.4",
+    "carefree-taro-check-radio": "1.0.4",
     "lodash": "4.17.21",
     "rc-field-form": "1.25.0",
     "react": "^17.0.0",
