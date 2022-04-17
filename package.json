@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "carefree-taro-root",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "scripts": {
     "start": "dumi dev",
     "dev:h5": "lerna exec --scope example -- npm run dev:h5",
