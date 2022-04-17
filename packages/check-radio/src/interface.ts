@@ -12,7 +12,7 @@ export interface CheckRadioProps {
   /** 禁用 **/
   disabled?: boolean;
   /** icon 图标配置 **/
-  iconProps?: Omit<IconProps, 'onClick' | 'visible' | 'disabled'>;
+  iconProps?: Omit<IconProps, 'onClick' | 'visible' | 'disabled' | 'magnification'>;
   /** 主键 */
   rowKey?: string;
   /** 渲染字段 */
@@ -21,6 +21,9 @@ export interface CheckRadioProps {
   render?: (options: ValueType) => React.ReactNode;
   options?: Record<string, any>[];
   children?: React.ReactNode;
+  /** 圆角倍率 用于计算圆角(宽/倍率) **/
+  magnification?: number;
+  type?: 'radio';
 }
 
 export interface ItemProps {
@@ -34,10 +37,14 @@ export interface ItemProps {
   /** 禁用 **/
   disabled?: boolean;
   /** icon 图标配置 **/
-  iconProps?: Omit<IconProps, 'onClick' | 'visible' | 'disabled'>;
+  iconProps?: Omit<IconProps, 'onClick' | 'visible' | 'disabled' | 'magnification'>;
   children?: React.ReactNode;
+  /** 在options中当前对象的所有值 */
   itemValue?: ValueType;
   className?: string;
+  /** 圆角倍率 用于计算圆角(宽/倍率) **/
+  magnification?: number;
+  type?: 'radio';
 }
 
 export interface CheckRadioContextProps extends Omit<CheckRadioProps, 'render' | 'onChange'> {

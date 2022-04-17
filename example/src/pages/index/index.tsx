@@ -9,7 +9,7 @@ import './index.less';
 export default () => {
   const [visible, setVisible] = React.useState(false);
 
-  const [values, setValues] = React.useState<any>([{ value: 1, label: '测试' }]);
+  const [values, setValues] = React.useState<any>({ value: 1, label: '测试' });
   const [values2, setValues2] = React.useState<any>([{ value: '222', label: '测试' }]);
   const [values3, setValues3] = React.useState<any>(false);
 
@@ -32,7 +32,8 @@ export default () => {
     <View className="index">
       <View style={{ padding: '20px' }}>
         <CarefreeTaroCheckRadio
-          multiple
+          // multiple
+          type="radio"
           labelInValue
           value={values}
           onChange={(value) => {
@@ -44,10 +45,15 @@ export default () => {
               label: '测试',
               value: 1,
             },
+            {
+              label: '测试2',
+              value: 2,
+            },
           ]}
         />
         <CarefreeTaroCheckRadio
           value={values2}
+          magnification={10}
           multiple
           labelInValue
           onChange={(value) => {
@@ -56,6 +62,7 @@ export default () => {
           }}
         >
           <CarefreeTaroCheckRadio.Item value="222">吃大餐达成1</CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item value="2">吃大餐达成1-2</CarefreeTaroCheckRadio.Item>
         </CarefreeTaroCheckRadio>
         <CarefreeTaroCheckRadio.Item
           visible={values3}
@@ -67,6 +74,7 @@ export default () => {
           吃大餐达成2
         </CarefreeTaroCheckRadio.Item>
         <CarefreeTaroCheckRadio.Item>吃大餐达成3</CarefreeTaroCheckRadio.Item>
+        <CarefreeTaroCheckRadio.Item>吃大餐达成4</CarefreeTaroCheckRadio.Item>
       </View>
       <Button
         onClick={() => {

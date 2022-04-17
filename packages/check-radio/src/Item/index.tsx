@@ -12,6 +12,27 @@ const Item = (props: ItemProps) => {
   const [visible, setVisible] = React.useState(false);
 
   const store = useCheckRadioContext();
+
+  const magnification = React.useMemo(() => {
+    return Reflect.has(store, 'magnification')
+      ? Reflect.get(store, 'magnification')
+      : Reflect.has(props, 'magnification')
+      ? Reflect.get(props, 'magnification')
+      : 2;
+  }, [store.magnification, props.magnification]);
+
+  const iconProps = React.useMemo(() => {
+    return Reflect.has(store, 'iconProps') ? Reflect.get(store, 'iconProps') : props.iconProps;
+  }, [store.iconProps, props.iconProps]);
+
+  const disabled = React.useMemo(() => {
+    return Reflect.has(store, 'disabled') ? Reflect.get(store, 'disabled') : props.disabled;
+  }, [store.disabled, props.disabled]);
+
+  const type = React.useMemo(() => {
+    return Reflect.has(store, 'type') ? Reflect.get(store, 'type') : props.type;
+  }, [store.type, props.type]);
+
   const diffValue = JSON.stringify({
     value,
     store: store.value,
@@ -43,7 +64,10 @@ const Item = (props: ItemProps) => {
     ? props.visible
     : visible;
 
-  const onClick = (visible: boolean) => {
+  const onClick = () => {
+    if (type === 'radio' && checkVisible) {
+      return;
+    }
     if (store.onChange) {
       store.onChange(
         value,
@@ -53,16 +77,19 @@ const Item = (props: ItemProps) => {
     } else if (props.onChange) {
       props.onChange(!checkVisible);
     } else {
-      setVisible(visible);
+      setVisible(!checkVisible);
     }
   };
 
   return (
-    <View
-      onClick={() => onClick(!visible)}
-      className={`carefree-taro-check-radio-item ${className}`}
-    >
-      <CheckRadio visible={checkVisible} onClick={onClick} />
+    <View onClick={onClick} className={`carefree-taro-check-radio-item ${className}`}>
+      <CheckRadio
+        {...(iconProps || {})}
+        disabled={disabled}
+        magnification={magnification}
+        visible={checkVisible}
+        onClick={onClick}
+      />
       <View className="carefree-taro-check-radio-item-body">{child}</View>
     </View>
   );
