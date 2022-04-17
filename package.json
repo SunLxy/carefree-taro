@@ -7,7 +7,7 @@
     "dev:h5": "lerna exec --scope example -- npm run dev:h5",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "npm run build:form && npm run build:modal",
+    "build": "npm run build:form && npm run build:modal && npm run build:check-radio",
     "------taro-form------": "-------------------",
     "build:form": "lerna exec --scope carefree-taro-form  -- npm run build",
     "watch:form": "lerna exec --scope carefree-taro-form  -- npm run watch",
