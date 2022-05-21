@@ -1,5 +1,5 @@
 {
-  "name": "carefree-taro-fuzzy-search",
+  "name": "carefree-taro-search",
   "version": "1.0.5",
   "description": "",
   "author": "SunLxy <1011771396@qq.com>",
@@ -13,6 +13,9 @@
     "esm",
     "src"
   ],
+  "peerDependencies": {
+    "@linaria/react": "^3.0.0-beta.15"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SunLxy/carefree-taro.git"
@@ -24,11 +27,5 @@
   },
   "bugs": {
     "url": "https://github.com/SunLxy/carefree-taro/issues"
-  },
-  "peerDependencies": {
-    "carefree-taro-modal": ">=1.0.5"
-  },
-  "devDependencies": {
-    "carefree-taro-modal": "~1.0.5"
   }
 }

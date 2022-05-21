@@ -1,8 +1,9 @@
-import React from 'react';
-import { View, Input, Text, Button } from '@tarojs/components';
-import CarefTaroFrom from 'carefree-taro-form';
+import { Button, Input, Text, View } from '@tarojs/components';
 import CarefreeTaroCheckRadio from 'carefree-taro-check-radio';
+import CarefTaroFrom from 'carefree-taro-form';
 import CarefreeTaroModal, { ModalRefProps } from 'carefree-taro-modal';
+import Search from 'carefree-taro-search';
+import React from 'react';
 import 'taro-ui/dist/style/components/button.scss'; // 按需引入
 import './index.less';
 
@@ -30,6 +31,9 @@ export default () => {
 
   return (
     <View className="index">
+      <View style={{ padding: '20px' }}>
+        <Search />
+      </View>
       <View style={{ padding: '20px' }}>
         <CarefreeTaroCheckRadio
           // multiple

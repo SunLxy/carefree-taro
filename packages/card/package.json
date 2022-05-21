@@ -18,7 +18,9 @@
     "url": "git+https://github.com/SunLxy/carefree-taro.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "tsbb build",
+    "watch": "tsbb watch"
   },
   "bugs": {
     "url": "https://github.com/SunLxy/carefree-taro/issues"
