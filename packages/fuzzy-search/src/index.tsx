@@ -8,7 +8,7 @@ export interface FuzzySearchProps extends ModalProps {
   title?: React.ReactNode;
   value?: string;
   onChange?: InputSearchProps['onChange'];
-  searchProps?: Omit<InputSearchProps, 'onChange'>;
+  searchProps?: Omit<InputSearchProps, 'onChange' | 'style'> & { style?: React.CSSProperties };
   searchBtnText?: React.ReactNode;
   children?: React.ReactNode;
 }
@@ -22,11 +22,10 @@ const FuzzySearch = (props: FuzzySearchProps) => {
     onChange,
     searchBtnText = '查询',
     children,
-    scrollViewProps,
     onClose,
     ...rest
   } = props;
-
+  const { style } = searchProps || {};
   return (
     <React.Fragment>
       <Modal
@@ -38,10 +37,29 @@ const FuzzySearch = (props: FuzzySearchProps) => {
         bodyClassName={`carefree-taro-fuzzy-search ${bodyClassName}`}
       >
         <View className="carefree-taro-fuzzy-search-title">{title}</View>
-        <Icon onClick={onClose} className="carefree-taro-fuzzy-search-close" type="clear" />
+        <Icon
+          size="18"
+          onClick={onClose}
+          className="carefree-taro-fuzzy-search-close"
+          type="clear"
+        />
         <Search
-          {...searchProps}
-          suffix={<Button className="carefree-taro-fuzzy-search-btn">{searchBtnText}</Button>}
+          suffix={
+            <Button
+              plain
+              size="mini"
+              className="carefree-taro-fuzzy-search-btn"
+              {...searchProps}
+              style={{
+                borderColor: 'transparent',
+                borderTopLeftRadius: 0,
+                borderBottomLeftRadius: 0,
+                ...(style || {}),
+              }}
+            >
+              {searchBtnText}
+            </Button>
+          }
           onChange={onChange}
         />
         <View style={{ overflowY: 'auto' }}>{children}</View>
