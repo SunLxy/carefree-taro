@@ -1,7 +1,7 @@
 import React from 'react';
 import Search, { InputSearchProps } from 'carefree-taro-search';
 import Modal, { ModalProps } from 'carefree-taro-modal';
-import { Button, View, Icon, ScrollView, ScrollViewProps } from '@tarojs/components';
+import { Button, View, Icon } from '@tarojs/components';
 import './styles/index.css';
 
 export interface FuzzySearchProps extends ModalProps {
@@ -11,7 +11,6 @@ export interface FuzzySearchProps extends ModalProps {
   searchProps?: Omit<InputSearchProps, 'onChange'>;
   searchBtnText?: React.ReactNode;
   children?: React.ReactNode;
-  scrollViewProps?: ScrollViewProps;
 }
 
 const FuzzySearch = (props: FuzzySearchProps) => {
@@ -39,20 +38,13 @@ const FuzzySearch = (props: FuzzySearchProps) => {
         bodyClassName={`carefree-taro-fuzzy-search ${bodyClassName}`}
       >
         <View className="carefree-taro-fuzzy-search-title">{title}</View>
-        <Icon
-          size="25"
-          onClick={onClose}
-          className="carefree-taro-fuzzy-search-close"
-          type="clear"
-        />
+        <Icon onClick={onClose} className="carefree-taro-fuzzy-search-close" type="clear" />
         <Search
           {...searchProps}
           suffix={<Button className="carefree-taro-fuzzy-search-btn">{searchBtnText}</Button>}
           onChange={onChange}
         />
-        <ScrollView scrollY {...scrollViewProps}>
-          {children}
-        </ScrollView>
+        <View style={{ overflowY: 'auto' }}>{children}</View>
       </Modal>
     </React.Fragment>
   );

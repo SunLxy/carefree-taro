@@ -1,6 +1,6 @@
 {
   "name": "carefree-taro-fuzzy-search",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "author": "SunLxy <1011771396@qq.com>",
   "homepage": "https://github.com/SunLxy/carefree-taro#readme",
@@ -26,16 +26,16 @@
     "url": "https://github.com/SunLxy/carefree-taro/issues"
   },
   "peerDependencies": {
-    "carefree-taro-search": ">=1.0.5",
-    "carefree-taro-modal": ">=1.0.5",
     "@tarojs/components": "^3.4.4",
+    "carefree-taro-modal": ">=1.0.5",
+    "carefree-taro-search": ">=1.0.5",
     "react": ">=17.x",
     "react-dom": ">=17.x"
   },
   "devDependencies": {
-    "carefree-taro-search": ">=1.0.5",
-    "carefree-taro-modal": ">=1.0.5",
     "@tarojs/components": "^3.4.4",
+    "carefree-taro-modal": "1.0.6",
+    "carefree-taro-search": "1.0.6",
     "react": ">=17.x",
     "react-dom": ">=17.x"
   }

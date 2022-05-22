@@ -13,9 +13,6 @@
   top: 15px;
   right: 15px;
 }
-.carefree-taro-fuzzy-search-close::before {
-  content: 'X';
-}
 
 .carefree-taro-fuzzy-search-btn {
   border: 0;
