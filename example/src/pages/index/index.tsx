@@ -32,7 +32,7 @@ export default () => {
   return (
     <View className="index">
       <View style={{ padding: '20px' }}>
-        <Search />
+        <Search prefix="测试" suffix={<Button style={{ height: '100%' }}>hhh </Button>} />
       </View>
       <View style={{ padding: '20px' }}>
         <CarefreeTaroCheckRadio

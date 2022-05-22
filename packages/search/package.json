@@ -13,9 +13,6 @@
     "esm",
     "src"
   ],
-  "peerDependencies": {
-    "@linaria/react": "^3.0.0-beta.15"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SunLxy/carefree-taro.git"

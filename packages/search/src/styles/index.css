@@ -1,3 +1,45 @@
 .carefree-taro-search {
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.carefree-taro-search-input-warp {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.carefree-taro-search-input {
+  flex: 1;
+  padding: 0 10px;
+}
+.carefree-taro-search-input-close {
+  padding: 0 10px 0px 0px;
+}
+
+.carefree-taro-search-prefix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #ccc;
+}
+
+.carefree-taro-search-suffix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #ccc;
+}
+
+.carefree-taro-search-no-bordered {
+  border: none;
+}
+
+.carefree-taro-search-bordered-bottom {
+  border-bottom: 1px solid #ccce;
+  border-radius: 0;
 }
