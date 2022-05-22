@@ -74,7 +74,12 @@ const InputSearch = (props: InputSearchProps) => {
           className={`carefree-taro-search-input ${borderClx} ${className}`}
         />
         {isValue && !disabled && (
-          <Icon onClick={onClear} className="carefree-taro-search-input-close" type="clear" />
+          <Icon
+            size="18"
+            onClick={onClear}
+            className="carefree-taro-search-input-close"
+            type="clear"
+          />
         )}
       </View>
       {suffix && <View className={`carefree-taro-search-suffix ${borderClx}`}>{suffix}</View>}

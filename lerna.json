@@ -1,6 +1,6 @@
 {
   "packages": ["packages/*", "example"],
-  "version": "1.0.7",
+  "version": "1.0.8",
   "command": {
     "create": {
       "license": "MIT"
