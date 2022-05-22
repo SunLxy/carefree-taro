@@ -3,12 +3,14 @@ import CarefreeTaroCheckRadio from 'carefree-taro-check-radio';
 import CarefTaroFrom from 'carefree-taro-form';
 import CarefreeTaroModal, { ModalRefProps } from 'carefree-taro-modal';
 import Search from 'carefree-taro-search';
+import FuzzySearch from 'carefree-taro-fuzzy-search';
 import React from 'react';
 import 'taro-ui/dist/style/components/button.scss'; // 按需引入
 import './index.less';
 
 export default () => {
   const [visible, setVisible] = React.useState(false);
+  const [visible2, setVisible2] = React.useState(false);
 
   const [values, setValues] = React.useState<any>({ value: 1, label: '测试' });
   const [values2, setValues2] = React.useState<any>([{ value: '222', label: '测试' }]);
@@ -31,9 +33,110 @@ export default () => {
 
   return (
     <View className="index">
+      <FuzzySearch visible={visible2} onClose={() => setVisible2(false)}>
+        <View style={{ padding: '20px' }}>
+          <CarefreeTaroCheckRadio
+            // multiple
+            type="radio"
+            labelInValue
+            value={values}
+            onChange={(value) => {
+              console.log('value', value);
+              setValues(value);
+            }}
+            options={[
+              {
+                label: '测试',
+                value: 1,
+              },
+              {
+                label: '测试2',
+                value: 2,
+              },
+            ]}
+          />
+          <CarefreeTaroCheckRadio
+            value={values2}
+            magnification={10}
+            multiple
+            labelInValue
+            onChange={(value) => {
+              console.log('value--->', value);
+              setValues2(value);
+            }}
+          >
+            <CarefreeTaroCheckRadio.Item value="222">吃大餐达成1</CarefreeTaroCheckRadio.Item>
+            <CarefreeTaroCheckRadio.Item value="2">吃大餐达成1-2</CarefreeTaroCheckRadio.Item>
+          </CarefreeTaroCheckRadio>
+          <CarefreeTaroCheckRadio.Item
+            visible={values3}
+            onChange={(value) => {
+              console.log(222, value);
+              setValues3(value);
+            }}
+          >
+            吃大餐达成2
+          </CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item>吃大餐达成3</CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item>吃大餐达成4</CarefreeTaroCheckRadio.Item>
+        </View>
+        <View style={{ padding: '20px' }}>
+          <CarefreeTaroCheckRadio
+            // multiple
+            type="radio"
+            labelInValue
+            value={values}
+            onChange={(value) => {
+              console.log('value', value);
+              setValues(value);
+            }}
+            options={[
+              {
+                label: '测试',
+                value: 1,
+              },
+              {
+                label: '测试2',
+                value: 2,
+              },
+            ]}
+          />
+          <CarefreeTaroCheckRadio
+            value={values2}
+            magnification={10}
+            multiple
+            labelInValue
+            onChange={(value) => {
+              console.log('value--->', value);
+              setValues2(value);
+            }}
+          >
+            <CarefreeTaroCheckRadio.Item value="222">吃大餐达成1</CarefreeTaroCheckRadio.Item>
+            <CarefreeTaroCheckRadio.Item value="2">吃大餐达成1-2</CarefreeTaroCheckRadio.Item>
+          </CarefreeTaroCheckRadio>
+          <CarefreeTaroCheckRadio.Item
+            visible={values3}
+            onChange={(value) => {
+              console.log(222, value);
+              setValues3(value);
+            }}
+          >
+            吃大餐达成2
+          </CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item>吃大餐达成3</CarefreeTaroCheckRadio.Item>
+          <CarefreeTaroCheckRadio.Item>吃大餐达成4</CarefreeTaroCheckRadio.Item>
+        </View>
+      </FuzzySearch>
       <View style={{ padding: '20px' }}>
         <Search prefix="测试" suffix={<Button style={{ height: '100%' }}>hhh </Button>} />
       </View>
+      <Button
+        onClick={() => {
+          setVisible2(true);
+        }}
+      >
+        打开模糊查询
+      </Button>
       <View style={{ padding: '20px' }}>
         <CarefreeTaroCheckRadio
           // multiple

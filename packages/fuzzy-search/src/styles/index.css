@@ -1,0 +1,33 @@
+.carefree-taro-fuzzy-search {
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+}
+.carefree-taro-fuzzy-search-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.carefree-taro-fuzzy-search-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.carefree-taro-fuzzy-search-close::before {
+  content: 'X';
+}
+
+.carefree-taro-fuzzy-search-btn {
+  border: 0;
+  height: 100%;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+taro-button-core.carefree-taro-fuzzy-search-btn::after {
+  border: 0;
+  border-radius: 0;
+}

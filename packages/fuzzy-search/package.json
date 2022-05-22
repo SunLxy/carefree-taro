@@ -26,9 +26,17 @@
     "url": "https://github.com/SunLxy/carefree-taro/issues"
   },
   "peerDependencies": {
-    "carefree-taro-modal": ">=1.0.5"
+    "carefree-taro-search": ">=1.0.5",
+    "carefree-taro-modal": ">=1.0.5",
+    "@tarojs/components": "^3.4.4",
+    "react": ">=17.x",
+    "react-dom": ">=17.x"
   },
   "devDependencies": {
-    "carefree-taro-modal": "~1.0.5"
+    "carefree-taro-search": ">=1.0.5",
+    "carefree-taro-modal": ">=1.0.5",
+    "@tarojs/components": "^3.4.4",
+    "react": ">=17.x",
+    "react-dom": ">=17.x"
   }
 }

@@ -21,6 +21,7 @@ export interface ModalProps {
   bodyClassName?: string;
   /** 关闭 */
   onClose?: () => void;
+  disabledMask?: boolean;
 }
 export interface ModalRefProps {
   /** 关闭 */
@@ -40,6 +41,7 @@ const Modal: React.ForwardRefRenderFunction<ModalRefProps, ModalProps> = (props,
     maskClassName = '',
     modalClassName = '',
     onClose = () => {},
+    disabledMask = false,
   } = props;
   const timer = React.useRef<NodeJS.Timeout>();
 
@@ -88,7 +90,9 @@ const Modal: React.ForwardRefRenderFunction<ModalRefProps, ModalProps> = (props,
   return (
     <View className={`carefree-taro-modal carefree-taro-modal-${open} ${modalClassName}`}>
       <View
-        onClick={onMaskClick}
+        onClick={() => {
+          !disabledMask && onMaskClick();
+        }}
         className={`carefree-taro-modal-overlay carefree-taro-modal-overlay-${open} ${maskClassName}`}
       />
       <View

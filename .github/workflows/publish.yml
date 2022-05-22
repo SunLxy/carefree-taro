@@ -17,7 +17,7 @@ jobs:
         node-version: 14
  
     - run: yarn 
-    - run: yarn build
+    - run: yarn build:all
     - run: yarn run docs:build
 
     - name: Create Doc
@@ -74,3 +74,15 @@ jobs:
       with:
         token: ${{ secrets.NPM_TOKEN }}
         package: ./packages/check-radio/package.json
+    
+    - name: 📦 carefree-taro-modal publish to NPM
+      uses: JS-DevTools/npm-publish@master
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/search/package.json
+
+    - name: 📦 carefree-taro-check-radio publish to NPM
+      uses: JS-DevTools/npm-publish@master
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/fuzzy-search/package.json

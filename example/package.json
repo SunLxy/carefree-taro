@@ -46,6 +46,7 @@
     "carefree-taro-form": "1.0.5",
     "carefree-taro-modal": "1.0.5",
     "carefree-taro-search": "1.0.5",
+    "carefree-taro-fuzzy-search": "1.0.5",
     "lodash": "4.17.21",
     "rc-field-form": "1.25.0",
     "react": "^17.0.0",
