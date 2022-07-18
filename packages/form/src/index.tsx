@@ -94,10 +94,10 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
     subscribe: sub,
     hide: hide,
   });
-  React.useImperativeHandle(ref, () => formRef.current);
+  React.useImperativeHandle(ref, () => forms);
 
   return (
-    <FormParentNameContext.Provider value={name}>
+    <FormParentNameContext.Provider value={name || ''}>
       <HideContext.Provider value={hide}>
         <FormContext.Provider
           value={{

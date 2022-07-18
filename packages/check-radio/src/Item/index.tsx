@@ -42,7 +42,7 @@ const Item = (props: ItemProps) => {
     if (store.multiple) {
       if (Array.isArray(store.value) && store.value.length) {
         if (store.labelInValue) {
-          return !!store.value.find((item) => item[store.rowKey] === value);
+          return !!store.value.find((item) => (item || {})[store.rowKey || ''] === value);
         } else {
           return !!store.value.find((item) => item === value);
         }
@@ -50,7 +50,7 @@ const Item = (props: ItemProps) => {
     } else {
       if (store.value || store.value === 0 || store.value === false) {
         if (store.labelInValue && store.value) {
-          return store.value[store.rowKey] === value;
+          return store.value[store.rowKey || ''] === value;
         }
         return store.value === value;
       }
@@ -72,7 +72,7 @@ const Item = (props: ItemProps) => {
       store.onChange(
         value,
         checkVisible,
-        props.itemValue || { [store.rowKey]: value, [store.labelKey]: child },
+        props.itemValue || { [store.rowKey || '']: value, [store.labelKey || '']: child },
       );
     } else if (props.onChange) {
       props.onChange(!checkVisible);

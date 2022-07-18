@@ -16,7 +16,7 @@ export default () => {
   const [values2, setValues2] = React.useState<any>([{ value: '222', label: '测试' }]);
   const [values3, setValues3] = React.useState<any>(false);
 
-  const modalRef = React.useRef<ModalRefProps>();
+  const modalRef = React.useRef<ModalRefProps>(null);
 
   const [form] = CarefTaroFrom.useForm();
   const onSubmit = async () => {
@@ -214,8 +214,8 @@ export default () => {
           ces: (value, formvalue, child, hideContext) => {
             console.log(value, hideContext);
             if (value === '12') {
-              hideContext.updateValue('a', true);
-            } else if (hideContext.getStoreState(['a'])) {
+              hideContext?.updateValue('a', true);
+            } else if (hideContext?.getStoreState(['a'])) {
               hideContext.updateValue('a', false);
             }
           },

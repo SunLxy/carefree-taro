@@ -24,5 +24,8 @@
   },
   "bugs": {
     "url": "https://github.com/SunLxy/carefree-taro/issues"
+  },
+  "devDependencies": {
+    "@tarojs/taro": "~3.4.13"
   }
 }

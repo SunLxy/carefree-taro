@@ -1,5 +1,5 @@
 import { IconProps } from './icon/interface';
-export type ValueType = string | number | boolean | Record<string, any>;
+export type ValueType = undefined | string | number | boolean | Record<string, any>;
 
 export interface CheckRadioProps {
   /** 值 **/
@@ -48,5 +48,5 @@ export interface ItemProps {
 }
 
 export interface CheckRadioContextProps extends Omit<CheckRadioProps, 'render' | 'onChange'> {
-  onChange?: (value: ValueType, check: boolean, options?: ValueType) => void;
+  onChange?: (value: ValueType, check: boolean | undefined, options?: ValueType) => void;
 }
