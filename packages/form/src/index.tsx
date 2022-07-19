@@ -68,7 +68,7 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
     ...other
   } = props;
 
-  const formRef = React.useRef<FormInstance>();
+  const formRef = React.useRef<FormInstance>(null);
 
   const [firstMont, setFirstMont] = React.useState(false);
 
@@ -104,7 +104,7 @@ const InitForm: React.ForwardRefRenderFunction<FormInstance, CarefreeFormProps> 
             firstMont,
             watchList: watchList || {},
             form: forms,
-            itemRefHook: formRef.current,
+            itemRefHook: formRef.current || undefined,
           }}
         >
           <FormStyleContext.Provider

@@ -64,7 +64,7 @@ const ConfigItem = (props: ConfigItemProps) => {
         const { type, label, name, itemAttr, attr, rules, render, isHide } = item;
 
         const { shouldUpdate, dependencies, ...itemOther } = itemAttr || {};
-        let renderItem = undefined;
+        let renderItem;
 
         if (type === 'Input') {
           const attrs = attr as InputProps;
@@ -94,7 +94,11 @@ const ConfigItem = (props: ConfigItemProps) => {
           renderItem = render;
         }
 
-        if (watchList && Object.keys(watchList).length && watchList[getPathName(name, formName)]) {
+        if (
+          watchList &&
+          Object.keys(watchList).length &&
+          watchList[getPathName(name || '', formName)]
+        ) {
           renderItem = <WatchItem key={index}>{renderItem}</WatchItem>;
         }
 
